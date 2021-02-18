@@ -1,0 +1,13 @@
+.linksDiv{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+a{
+    margin:0.8rem;
+    width: max-content;
+}
+
+p{
+    width: max-content;
+} 
