@@ -1,11 +1,8 @@
 function stringToObj (string){
-    let array = string.split('.');
-    let obj = {};
-    let result = obj;
-    for (let i=0; i<array.length; i++){
-        result = result[array[i]] = {};
-    }
-    console.log(obj);
+    let array = string.split('.').reduceRight((prev, cur) => ({ [cur]: prev }), null);
+    console.log(array);
 }
 
 stringToObj('a.b.c.d');
+/*.reduceRight((prev, cur) => ({ [cur]: prev }), null);
+console.log(objectHell('a.b.c.d'));*/
