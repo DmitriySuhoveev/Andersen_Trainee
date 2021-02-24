@@ -1,25 +1,15 @@
-class Counter {
-    count = 0;
-    constructor(){
-        if(typeof Counter.instance === 'object'){
-            return Counter.instance;
-        }
-        Counter.instance = this;
-        return Counter.instance
-    }
+function Singleton(){
+    let instance;
 
-    getCounter(){
-        return this.count;
-    }
-    incCounter(){
-        this.count++;
+    return function Construct_singleton(){
+        if(instance){
+            return instance;
+        }
+        if(this && this.construtor === Construct_singleton){
+            instance = this;
+        } else{
+            return new Construct_singleton();
+        }
     }
 }
 
-let newCounter1 = new Counter()
-let newCounter2 = new Counter()
-
-newCounter1.incCounter();
-newCounter2.incCounter();
-
-console.log(newCounter1 === newCounter2);
