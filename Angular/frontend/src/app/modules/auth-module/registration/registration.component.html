@@ -1,0 +1,25 @@
+<form class="registration-form" [formGroup]="registrationForm">
+    <h1>Registration Component</h1>
+    <div class="registration-form-signup-username">
+        <p>UserName</p>
+        <input formControlName="username">
+    </div>
+    <div class="registration-form-signup-password">
+        <p>Password</p>
+        <input formControlName="password">
+        <div class="errorPassword" 
+        *ngIf="registrationForm.controls['password'].invalid">
+        Неверно введён пароль
+        </div>
+    </div>
+    <div class="registration-form-signup-confirmPassword">
+        <p>Confirm Password</p>
+        <input formControlName="confirmPassword">
+        <div class="registration-from-signup-confirmPassword"
+        *ngIf="registrationForm.controls['confirmPassword'].value !== registrationForm.controls['password'].value">
+        Пароли не совпадают
+    </div>
+    </div>
+    <button (click)="signUp()">Sign Up</button>
+    <button (click)="signIn()">Sign In</button>
+</form>

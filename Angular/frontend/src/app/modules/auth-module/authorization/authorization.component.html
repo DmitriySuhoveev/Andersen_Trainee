@@ -1,0 +1,13 @@
+<form class="authorizationForm-form" [formGroup]="authorizationForm">
+    <h1>Authorization Component</h1>
+    <div class="authorizationForm-form-signup-username">
+        <p>UserName</p>
+        <input formControlName="username">
+    </div>
+    <div class="authorizationForm-form-signup-password">
+        <p>Password</p>
+        <input formControlName="password">
+    </div>
+    <button (click)='signIn()'>Sign In</button>
+    <button (click)='redirectToSignUp()'>Sign Up</button>
+</form>
