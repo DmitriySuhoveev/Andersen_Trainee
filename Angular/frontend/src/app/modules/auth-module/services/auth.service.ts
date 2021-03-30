@@ -1,8 +1,8 @@
 import { config } from '../../../config';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of, Observable} from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { Observable} from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 interface User{
@@ -26,36 +26,26 @@ export class AuthService {
     login(user: User): Observable<any>{
         return this.http.post<any>(`${config.baseUrl}/auth/signin`, user)
         .pipe(
-            tap((token: {accessToken: string}) => this.storeToken(token.accessToken)),
-            catchError(error =>
-                {
-                alert(error.error);
-                return of(false);
-            })
+            tap((token: {accessToken: string}) => this.storeToken(token.accessToken))
         );
     }
 
-    logout(){
+    logout(): void{
         return this.removeToken();
     }
-    isLoggedIn() {
+    isLoggedIn(): boolean {
         return !!this.getJwtToken() && !this.jwtHelper.isTokenExpired(this.getJwtToken());
     }
 
-    verifyJWT(){
-        const jwt = localStorage.getItem(this.JWT_TOKEN);
-        console.log(jwt);
-    }
-
-    getJwtToken() {
+    getJwtToken(): string {
         return localStorage.getItem(this.JWT_TOKEN);
     }
 
-    private storeToken(token: string) {
+    private storeToken(token: string): void {
         localStorage.setItem(this.JWT_TOKEN, token);
     }
 
-    private removeToken() {
+    private removeToken(): void {
         localStorage.removeItem(this.JWT_TOKEN);
     }
     }

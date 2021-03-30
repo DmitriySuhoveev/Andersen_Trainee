@@ -31,8 +31,7 @@ export class SignInComponent implements OnInit {
   signIn(): void{
     this.authService.login(
       {
-        username: this.authorizationForm.controls.username.value,
-        password: this.authorizationForm.controls.password.value
+        ...this.authorizationForm?.value
       }
     )
     .subscribe(() => {this.router.navigate(['/dashboard']);

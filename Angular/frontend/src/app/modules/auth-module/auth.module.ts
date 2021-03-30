@@ -1,3 +1,4 @@
+import { HandleValidators } from './../../handleValidators/handleValidators';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { NgModule } from '@angular/core';
@@ -14,6 +15,6 @@ import { AuthComponent } from './auth.component';
     ReactiveFormsModule,
     AuthorizationRoutingModule
   ],
-  providers: [AuthService]
+  providers: [AuthService, HandleValidators]
 })
 export class AuthModuleModule { }

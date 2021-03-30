@@ -30,16 +30,15 @@ export class SignUpComponent implements OnInit {
   signUp(): void{
     this.authService.logup(
       {
-        username: this.registrationForm.controls.username.value,
-        password: this.registrationForm.controls.password.value
+        ...this.registrationForm?.value
       }
     )
-    .subscribe(() => { this.navigateTosignIn();
+    .subscribe(() => { this.navigateToSignIn();
     }
     );
   }
 
-  navigateTosignIn(): void{
+  navigateToSignIn(): void{
     this.router.navigate(['/auth/authorization']);
   }
 }
