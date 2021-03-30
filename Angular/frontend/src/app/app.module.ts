@@ -1,15 +1,16 @@
+import { config } from './config';
 import { JwtModule } from '@auth0/angular-jwt';
-import { AuthModuleModule } from './modules/auth-module/auth-module.module';
+import { AuthModuleModule } from './modules/auth-module/auth.module';
 import { AuthService } from './modules/auth-module/services/auth.service';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from './token.interceptor';
-import { RouterModule, Routes} from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+
 
 export function tokenGetter(): any {
   return localStorage.getItem('JWT_TOKEN');
@@ -28,18 +29,14 @@ export function tokenGetter(): any {
     AuthModuleModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter
+        tokenGetter,
+        allowedDomains: [`${config.baseUrl}`]
       }
     })
   ],
   providers: [
     AuthGuard,
-    AuthService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    }
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,4 @@
-import { config } from '../../../../../config';
+import { config } from '../../../config';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of, Observable} from 'rxjs';
@@ -20,11 +20,11 @@ export class AuthService {
     constructor(private http: HttpClient, private jwtHelper: JwtHelperService){}
 
     logup(user: User): Observable<any>{
-        return this.http.post(`${config.apiUrl}/auth/signup`, user);
+        return this.http.post(`${config.baseUrl}/auth/signup`, user);
     }
 
     login(user: User): Observable<any>{
-        return this.http.post<any>(`${config.apiUrl}/auth/signin`, user)
+        return this.http.post<any>(`${config.baseUrl}/auth/signin`, user)
         .pipe(
             tap((token: {accessToken: string}) => this.storeToken(token.accessToken)),
             catchError(error =>
@@ -35,19 +35,11 @@ export class AuthService {
         );
     }
 
-    tokenCheck(){
-        if (this.jwtHelper.isTokenExpired(this.getJwtToken())){
-            return false;
-        } else{
-            return true;
-        }
-    }
-
     logout(){
         return this.removeToken();
     }
     isLoggedIn() {
-        return !!this.getJwtToken();
+        return !!this.getJwtToken() && !this.jwtHelper.isTokenExpired(this.getJwtToken());
     }
 
     verifyJWT(){
