@@ -2,13 +2,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {AuthorizationComponent} from './authorization/authorization.component';
-import {RegistrationComponent} from './registration/registration.component';
-import { AuthorizationRoutingModule } from './auth-module-routing.module';
-import { AuthComponent } from './auth/auth.component';
+import { SignInComponent } from './signIn/signIn.component';
+import { SignUpComponent } from './signUp/signUp.component';
+import { AuthorizationRoutingModule } from './auth-routing.module';
+import { AuthComponent } from './auth.component';
 
 @NgModule({
-  declarations: [AuthorizationComponent, RegistrationComponent, AuthComponent],
+  declarations: [SignInComponent, SignUpComponent, AuthComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
