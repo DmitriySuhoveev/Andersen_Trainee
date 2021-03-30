@@ -1,9 +1,8 @@
-import { HandleValidators } from './../../../handleValidators/handleValidators';
 import { AuthService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { passwordValidator } from '../../../handleValidators/handleValidators';
 @Component({
   selector: 'app-signUp',
   templateUrl: './signUp.component.html',
@@ -12,8 +11,7 @@ import { Router } from '@angular/router';
 export class SignUpComponent implements OnInit {
 
   registrationForm: FormGroup;
-  constructor(private authService: AuthService, private router: Router,
-              private formBuilder: FormBuilder, private handleValidators: HandleValidators){}
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder){}
 
   ngOnInit(): void {
     this.initForm();
@@ -22,20 +20,15 @@ export class SignUpComponent implements OnInit {
   initForm(): void{
     this.registrationForm = this.formBuilder.group({
       username: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
-      confirmPassword: new FormControl(null, [Validators.required, Validators.minLength(8), this.handleValidators.passwordValidator])
+      password: new FormControl(null, [Validators.required, Validators.minLength(8), passwordValidator]),
+      confirmPassword: new FormControl(null, [Validators.required, Validators.minLength(8)])
     });
   }
 
   signUp(): void{
-    this.authService.logup(
-      {
-        ...this.registrationForm?.value
-      }
-    )
-    .subscribe(() => { this.navigateToSignIn();
-    }
-    );
+    this.authService.logup(this.registrationForm?.value)
+    .subscribe(() =>  this.navigateToSignIn()
+  );
   }
 
   navigateToSignIn(): void{

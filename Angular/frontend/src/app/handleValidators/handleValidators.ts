@@ -1,12 +1,12 @@
-import { FormControl } from '@angular/forms';
-export class HandleValidators {
-    passwordValidator(passwordControl: FormControl): any{
-        const isPasswordValid = /\d/.test(passwordControl.value) || /[A-Z]/.test(passwordControl.value);
+import { FormControl, ValidationErrors } from '@angular/forms';
+
+export function passwordValidator(passwordControl: FormControl): ValidationErrors{
+        const isPasswordValid = /(?=.*[0-9])(?=.*[A-Z])/g.test(passwordControl.value);
         if (!isPasswordValid){
         return {message: 'Вы некорректно ввели пароль'};
         }
         return null;
     }
-}
+
 
 

@@ -29,13 +29,9 @@ export class SignInComponent implements OnInit {
   }
 
   signIn(): void{
-    this.authService.login(
-      {
-        ...this.authorizationForm?.value
-      }
-    )
-    .subscribe(() => {this.router.navigate(['/dashboard']);
-    });
+    this.authService.login(this.authorizationForm.value)
+    .subscribe(() => this.router.navigate(['/dashboard'])
+    );
   }
 }
 

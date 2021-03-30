@@ -10,6 +10,10 @@ interface User{
     password: string;
 }
 
+interface AccessToken{
+    accessToken: string;
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -19,14 +23,14 @@ export class AuthService {
     private readonly JWT_TOKEN = 'JWT_TOKEN';
     constructor(private http: HttpClient, private jwtHelper: JwtHelperService){}
 
-    logup(user: User): Observable<any>{
-        return this.http.post(`${config.baseUrl}/auth/signup`, user);
+    logup(user: User): Observable<void>{
+        return this.http.post<void>(`${config.baseUrl}/auth/signup`, user);
     }
 
-    login(user: User): Observable<any>{
-        return this.http.post<any>(`${config.baseUrl}/auth/signin`, user)
+    login(user: User): Observable<AccessToken>{
+        return this.http.post<AccessToken>(`${config.baseUrl}/auth/signin`, user)
         .pipe(
-            tap((token: {accessToken: string}) => this.storeToken(token.accessToken))
+            tap((token: AccessToken) => this.storeToken(token.accessToken))
         );
     }
 
