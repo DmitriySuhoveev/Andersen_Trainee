@@ -1,0 +1,42 @@
+<form [formGroup]="form">
+  <div class="email">
+    <p>Email</p>
+    <input formControlName="email">
+    <div class="alert alert-danger"
+      *ngIf="form.controls['email'].invalid && form.controls['email'].touched">
+      Неверно введён Email
+    </div>
+  </div>
+  <div class="firstName">
+    <p>First Name</p>
+    <input formControlName="firstname">
+    <div class="alert alert-danger"
+      *ngIf="form.controls['firstname'].invalid && form.controls['firstname'].touched">
+      Неверно введено имя
+    </div>
+  </div>
+  <div class="lastName">
+    <p>Last Name</p>
+    <input formControlName="lastname">
+    <div class="alert alert-danger"
+      *ngIf="form.controls['lastname'].invalid && form.controls['lastname'].touched">
+      Неверно введена фамилия
+    </div>
+  </div>
+  <div class="password">
+    <p>Password</p>
+    <input formControlName="password">
+    <div class="alert alert-danger"
+      *ngIf="form.controls['password'].invalid">
+      Неверный пароль
+    </div>
+  </div>
+  <div class="confirmPassword">
+    <p>Confirm Password</p>
+    <input formControlName="confirmPassword">
+    <div class="alert alert-danger"
+      *ngIf="form.controls['confirmPassword'].value !== form.controls['password'].value">
+      Пароли не совпадают
+    </div>
+  </div>
+</form>
