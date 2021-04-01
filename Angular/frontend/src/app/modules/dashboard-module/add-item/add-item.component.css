@@ -1,0 +1,20 @@
+.add-item-main-div{
+    display: flex;
+    align-items: center;
+}
+
+.add-item-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.add-item-form-field {
+    width: 100%;
+}
+
+.add-item-button {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+}
