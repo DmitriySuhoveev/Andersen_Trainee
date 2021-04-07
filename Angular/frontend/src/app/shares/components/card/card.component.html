@@ -1,0 +1,11 @@
+<mat-card class="mat-card">
+    <mat-card-header class="mat-card-header">
+        <!-- <div class="mat-card-icon-div" [style.background]="iconBackgroundColor"><mat-icon class="mat-icon" mat-card-avatar [svgIcon]="iconName"></mat-icon></div> -->
+        <div class="mat-card-icon-div" [style.background]="iconBackgroundColor"><mat-icon class="mat-icon" mat-card-avatar>{{iconName}}</mat-icon></div>
+        <div class="mat-card-title-div"><mat-card-title>{{title}}</mat-card-title></div>
+    </mat-card-header>
+    <hr>
+    <mat-card-content>
+        <ng-content></ng-content>
+    </mat-card-content>
+</mat-card> 

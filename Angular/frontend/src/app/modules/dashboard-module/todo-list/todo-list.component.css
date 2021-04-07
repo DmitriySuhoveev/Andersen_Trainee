@@ -1,0 +1,37 @@
+.mat-checkbox-input cdk-visually-hidden{
+    color: rgb(0, 199, 255); 
+}
+
+.todo-item{
+    display: flex;
+    margin: 16.35px 0px;
+}
+
+.todo-label-title{
+    margin-right: 10%;
+    margin-left: 5%;
+}
+
+.icon-edit{
+    font-size: 22px;
+    margin-left: auto;
+    margin-right: 5%;
+    color: rgb(39, 164, 39);
+    cursor: pointer;
+}
+
+.icon-edit:hover{
+    font-size: 24px;
+    transition: .1s;
+}
+
+.icon-delete{
+    font-size: 22px;
+    color: red;
+    cursor: pointer;
+}
+
+.icon-delete:hover{
+    font-size: 24px;
+    transition: .1s;
+}

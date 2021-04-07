@@ -1,0 +1,42 @@
+hr{
+    border: none;
+    background-color:rgb(230, 230, 230);
+    height: 2px;
+}
+
+.mat-card {
+    max-width: 600px;
+    margin: auto;
+    margin-top: 60px;
+}
+
+.mat-card-header{
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.mat-card-icon-div{
+    padding: 0rem 0.3rem 0rem 0.3rem;
+    position: absolute;
+    left: 1.2rem;
+    top: -2rem;
+    border-radius: 15%;
+    align-items: center;
+}
+
+.mat-icon{
+    height: 60px;
+    width: 60px;
+    font-size: 36px;
+    color: white;
+    text-align: center;
+    padding-top: 25%;
+}
+
+.mat-card-title-div{
+    opacity: 65%;
+}
+
+.mat-card-title-div{
+    margin-left: 4rem;
+}

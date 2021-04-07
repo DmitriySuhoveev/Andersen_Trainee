@@ -1,16 +1,22 @@
-<ul>
-    <li>
-    <a routerLink="/auth">Главная</a>
-    </li>
-    <li>
-    <a routerLink="/auth/authorization">Авторизация</a>
-    </li>
-    <li>
-    <a routerLink="/auth/registration">Регистрация</a>
-    </li>
-    <li>
-    <a routerLink="/dashboard">Todo List</a>
-    </li>
-</ul>
+<mat-toolbar class="mat-toolbar">
+    <button mat-icon-button class="example-icon" mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+            <a routerLink="/auth">Главная</a>
+        </button>
+        <button mat-menu-item>
+            <a routerLink="/auth/authorization">Авторизация</a>
+        </button>
+        <button mat-menu-item>
+            <a routerLink="/auth/registration">Регистрация</a>
+        </button>
+        <button mat-menu-item>
+            <a routerLink="/dashboard">Todo List</a>
+        </button>
+
+    </mat-menu>
+    </button>
+</mat-toolbar>
 <router-outlet></router-outlet>
 

@@ -1,0 +1,14 @@
+<app-card title="TO-DO LIST" iconName="view_list" iconBackgroundColor="rgb(255, 141, 47)">
+    <div class="todo-list-div">
+        <div class="todo-item-div" *ngFor="let toDoItem of toDoItems$ | async">
+            <div class="todo-item">
+                <mat-checkbox class="checkbox-item" (ngModel)="checked" color="primary"></mat-checkbox>
+                <label class="todo-label-title">{{toDoItem?.title}}</label>
+                <label class="todo-label-description">{{toDoItem?.description}}</label>
+                <mat-icon class="icon-edit">edit</mat-icon>
+                <mat-icon class="icon-delete">delete</mat-icon>
+            </div>
+            <hr>
+        </div>
+    </div>
+</app-card>
