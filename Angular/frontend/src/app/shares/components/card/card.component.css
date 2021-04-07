@@ -16,16 +16,25 @@ hr{
 }
 
 .mat-card-icon-div{
-    padding: 0.71rem;
+    padding: 0rem 0.3rem 0rem 0.3rem;
     position: absolute;
     left: 1.2rem;
     top: -2rem;
-    border: #000000 1px solid;
-    border-radius: 10%;
+    border-radius: 15%;
+    align-items: center;
+}
+
+.mat-icon{
+    height: 60px;
+    width: 60px;
+    font-size: 36px;
+    color: white;
+    text-align: center;
+    padding-top: 25%;
 }
 
 .mat-card-title-div{
-    opacity: 75%;
+    opacity: 65%;
 }
 
 .mat-card-title-div{

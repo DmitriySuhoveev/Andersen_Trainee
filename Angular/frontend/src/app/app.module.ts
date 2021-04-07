@@ -1,8 +1,9 @@
+import { DashboardService } from './modules/dashboard-module/dashboard-service/dashboard-service';
 import { DashboardModule } from './modules/dashboard-module/dashboard.module';
 import { config } from './config';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthModuleModule } from './modules/auth-module/auth.module';
-import { AuthService } from './modules/auth-module/services/auth.service';
+import { AuthService } from './modules/auth-module/auth-services/auth.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -35,7 +36,7 @@ export function tokenGetter(): any {
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        allowedDomains: [`${config.baseUrl}`]
+        allowedDomains: ['localhost:3000']
       }
     }),
     BrowserAnimationsModule,
@@ -47,7 +48,8 @@ export function tokenGetter(): any {
   ],
   providers: [
     AuthGuard,
-    AuthService
+    AuthService,
+    DashboardService
   ],
   bootstrap: [AppComponent]
 })

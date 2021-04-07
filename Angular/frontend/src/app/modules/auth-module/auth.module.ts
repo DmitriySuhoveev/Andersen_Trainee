@@ -1,5 +1,5 @@
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './auth-services/auth.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SignInComponent } from './signIn/signIn.component';

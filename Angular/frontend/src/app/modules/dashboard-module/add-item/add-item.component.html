@@ -1,13 +1,21 @@
-<app-card title='ADD ITEM' iconName="checklist" iconBackgroundColor="#3f51b5">
+<app-card title='ADD ITEM' iconName="assignment" iconBackgroundColor="rgb(0, 199, 255)">
     <div class="add-item-main-div">
-    <form class="add-item-form">    
+    <form class="add-item-form" [formGroup]="addTodoForm">
         <mat-form-field class="add-item-form-field">
-        <mat-label>What do you want to do?</mat-label>
-        <textarea matInput placeholder="Pay rent" cdkTextareaAutosize></textarea>
+            <mat-label>Title?</mat-label>
+            <input matInput placeholder="Pay" cdkTextareaAutosize formControlName="title">
+        </mat-form-field>
+            
+        <mat-form-field class="add-item-form-field">
+            <mat-label>What do you want to do?</mat-label>
+            <input matInput placeholder="Pay rent" cdkTextareaAutosize formControlName="description">
         </mat-form-field>
     </form>
-    <div class="add-item-button">
-        <button mat-mini-fab color="primary" aria-label="Example icon button with a plus one icon">+</button>
+    <div class="add-item-button-div">
+        <button mat-mini-fab class="add-item-btn" 
+                aria-label="Example icon button with a plus one icon"
+                (click)='addTodo()'
+        >+</button>
     </div>
 </div>
 </app-card> 
